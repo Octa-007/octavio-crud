@@ -1,0 +1,12 @@
+{%for event in lista_eventos%}
+<form action="{{url_for('actualizar', id=event.id)}}" method="post">
+    <div class="form-group">
+      <input type="text"  name="name_act" class="form-control" placeholder="ingrese el nombre del evento" required><br>
+      <input type="text"  name="fecha_act" class="form-control" placeholder="ingrese la fecha" required><br>
+      <input type="text"  name="lugar_act" class="form-control" placeholder="ingrese el lugar" required><br>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-info float-right ues-info">Actualizar</button>
+    </div>
+  </form>
+  {%endfor%}

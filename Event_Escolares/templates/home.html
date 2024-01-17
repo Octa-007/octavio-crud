@@ -1,0 +1,51 @@
+{% extends 'main.html'%}
+
+{% block cabecera %}
+        <title>Eventos Escolares</title>
+{% endblock %}
+    
+{% block cuerpo %}
+    <div class="container">
+        <div class="row mt-2">
+            <div class="col-2">
+                {% include 'plantillas/publicar-modal.html'%}
+            </div>
+            <div id="contenedor" class="col-3">
+                {% include 'plantillas/formulario.html'%}
+            </div>
+            <div class="col-6" >
+                <h5 class="text-center">Administrar Eventos<h5>
+                    <table class="table table-responsive-sm table-striped">
+                        <thead class="thead-inverse">
+                            <tr class="text-center">
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Fecha</th>
+                                <th>Lugar</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead> 
+                        <tbody>
+                            {%for event in lista_eventos%}
+                              <tr>
+                                <td>{{event.id}}</td>
+                                <td>{{event.nombre}}</td>
+                                <td>{{event.fecha}}</td>
+                                <td>{{event.lugar}}</td>
+                                <td> <a href="{{url_for('eliminar', id = event.id)}}">Eliminar</a>
+                                  </td>
+
+                              </tr>
+                              {%include 'plantillas/formulario_act.html'%}
+                              {%include 'plantillas/publicar-modal.html'%}
+                            {%endfor%}
+                        </tbody>
+                    </table>
+            </div>
+        </div>
+    </div>
+
+
+    
+    {% endblock %}
+
